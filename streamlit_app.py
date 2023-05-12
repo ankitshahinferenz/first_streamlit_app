@@ -1,2 +1,2 @@
 import streamlit
-stremlit.t('My parents new healthy diner')
+streamlit.t('My parents new healthy diner')
