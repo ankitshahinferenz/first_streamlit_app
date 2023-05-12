@@ -8,4 +8,4 @@ streamlit.text('🥣 Upma')
 streamlit.text('🥣 Idli')
 
 
-streamlit.header('Build your own fruits smoothy')
+streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
