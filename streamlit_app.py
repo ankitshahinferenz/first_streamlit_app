@@ -6,3 +6,6 @@ streamlit.header('Breakfast Menu')
 streamlit.text('🥣 Poha')
 streamlit.text('🥣 Upma')
 streamlit.text('🥣 Idli')
+
+
+streamlit.header('Build your own fruits smoothy')
