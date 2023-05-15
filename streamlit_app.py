@@ -42,19 +42,19 @@ my_data_row = my_cur.fetchone()
 streamlit.text("Hello from Snowflake:")
 streamlit.text(my_data_row)
 
-my_cnx1 = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur1 = my_cnx1.cursor()
-my_cur1.execute("select * from pc_rivery_db.public.fruit_load_list")
-my_data_row1 = my_cur1.fetchall()
+my_cur = my_cnx.cursor()
+my_cur.execute("select * from pc_rivery_db.public.fruit_load_list")
+my_data_row = my_cur.fetchall()
 streamlit.header("The fruit load list contains :")
-streamlit.dataframe(my_data_row1)
+streamlit.dataframe(my_data_row)
 
 fruit_add = streamlit.text_input('What fruit would you like to add?','JackFruit')
-streamlit.write('The user entered ', fruit_add)
-sequence_of_parameters = [fruit_add]
-my_cur1.executemany("insert into pc_rivery_db.public.fruit_load_list(fruit_name) select parse_json($1)[0]::varchar from values (%s)", [json.dumps(v) for v in sequence_of_parameters])
+streamlit.write('Thanks for adding ', fruit_add)
+my_cur.execute("insert into pc_rivery_db.public.fruit_load_list(fruit_name) values 'from streamlit' ")
+//sequence_of_parameters = [fruit_add]
+//my_cur1.executemany("insert into pc_rivery_db.public.fruit_load_list(fruit_name) select parse_json($1)[0]::varchar from values (%s)", [json.dumps(v) for v in sequence_of_parameters])
 
-one_row = my_cur1.fetchone()
-print("Opt: " + str(one_row[0]))
+//one_row = my_cur1.fetchone()
+//print("Opt: " + str(one_row[0]))
 
 
