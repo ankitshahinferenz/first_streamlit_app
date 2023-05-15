@@ -42,20 +42,6 @@ try:
 except URLError as e:
   streamlit.error()
 #streamlit.stop()
-
-#streamlit.write('The user entered ', fruit_choice)
-    
-    #streamlit.text(fruityvice_response.json())
-  # write your own comment -what does the next line do? 
- 
-  # write your own comment - what does this do?
-  
-#my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-#my_cur = my_cnx.cursor()
-#my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
-#my_data_row = my_cur.fetchone()
-#streamlit.text("Hello from Snowflake:")
-#streamlit.text(my_data_row)
 streamlit.header("The fruit load list contains :")
 def get_fruit_load_list():
     with my_cnx.cursor() as my_cur:
@@ -66,12 +52,18 @@ if streamlit.button('Get fruit load list'):
     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
     my_data_row = get_fruit_load_list()
     streamlit.dataframe(my_data_row)
-    
-#my_cur = my_cnx.cursor()
-#my_cur.execute("select * from pc_rivery_db.public.fruit_load_list")
-#my_data_row = my_cur.fetchall()
-#streamlit.dataframe(my_data_row)
+ streamlit.stop()   
 
+def insert_row_snowflake(new_fruit):
+    my_cur.execute("insert into pc_rivery_db.public.fruit_load_list(fruit_name) values ('from streamlit') ")
+    return "Thanks for adding new fruit " + new_fruit
+
+fruit_add = streamlit.text_input('What fruit would you like to add?')
+if streamlit.button('Add New Fruit'):
+    my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+    back_from_function = insert_row_snowflake(fruit_add)
+    streamlit.text(back_from_function)
+    
 #fruit_add = streamlit.text_input('What fruit would you like to add?','JackFruit')
 #streamlit.write('Thanks for adding ', fruit_add)
 #my_cur.execute("insert into pc_rivery_db.public.fruit_load_list(fruit_name) values ('from streamlit') ")
