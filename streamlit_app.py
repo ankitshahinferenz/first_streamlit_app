@@ -41,7 +41,7 @@ try:
     streamlit.dataframe(back_from_function)  
 except URLError as e:
   streamlit.error()
-streamlit.stop()
+#streamlit.stop()
 
 #streamlit.write('The user entered ', fruit_choice)
     
@@ -50,7 +50,7 @@ streamlit.stop()
  
   # write your own comment - what does this do?
   
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+#my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 #my_cur = my_cnx.cursor()
 #my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 #my_data_row = my_cur.fetchone()
