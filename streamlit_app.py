@@ -49,7 +49,7 @@ my_data_row1 = my_cur1.fetchall()
 streamlit.header("The fruit load list contains :")
 streamlit.dataframe(my_data_row1)
 
-fruit_add = streamlit.text_input('What fruit would you like to add?','')
+fruit_add = streamlit.text_input('What fruit would you like to add?','JackFruit')
 streamlit.write('The user entered ', fruit_add)
 sequence_of_parameters = [fruit_add]
 my_cur1.executemany("insert into pc_rivery_db.public.fruit_load_list(fruit_name) select parse_json($1)[0]::varchar from values (%s)", [json.dumps(v) for v in sequence_of_parameters])
