@@ -51,10 +51,5 @@ streamlit.dataframe(my_data_row)
 fruit_add = streamlit.text_input('What fruit would you like to add?','JackFruit')
 streamlit.write('Thanks for adding ', fruit_add)
 my_cur.execute("insert into pc_rivery_db.public.fruit_load_list(fruit_name) values 'from streamlit' ")
-//sequence_of_parameters = [fruit_add]
-//my_cur1.executemany("insert into pc_rivery_db.public.fruit_load_list(fruit_name) select parse_json($1)[0]::varchar from values (%s)", [json.dumps(v) for v in sequence_of_parameters])
-
-//one_row = my_cur1.fetchone()
-//print("Opt: " + str(one_row[0]))
 
 
